@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ulubione Rodzaje Muzyki</title>
+  </head>
+  <body>
+    <h1>Wybierz swoje ulubione rodzaje muzyki</h1>
+    <form id="musicForm">
+      <input type="checkbox" name="music" value="Pop" /> Pop<br />
+      <input type="checkbox" name="music" value="Rock" /> Rock<br />
+      <input type="checkbox" name="music" value="Heavy Metal" /> Heavy Metal<br />
+      <input type="checkbox" name="music" value="Hip Hop" /> Hip Hop<br />
+      <input type="checkbox" name="music" value="Rap" /> Rap<br />
+      <br />
+      <button type="button" onclick="submitForm()">Wyślij</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+      function submitForm() {
+        const checkboxes = document.querySelectorAll(
+          'input[name="music"]:checked'
+        );
+        let selectedGenres = [];
+
+        for (let i = 0; i < checkboxes.length; i++) {
+          selectedGenres.push(checkboxes[i].value);
+        }
+
+        const resultDiv = document.getElementById("result");
+        if (selectedGenres.length > 0) {
+          resultDiv.innerHTML =
+            "Wybrane rodzaje muzyki: " + selectedGenres.join(", ");
+        } else {
+          resultDiv.innerHTML = "Nie wybrano żadnego rodzaju muzyki.";
+        }
+      }
+    </script>
+  </body>
+</html>
